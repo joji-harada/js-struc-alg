@@ -1,2 +1,3 @@
 # js-struc-alg
- data structures and algorithms in JS
+ Data structures and algorithms in JS
+ For my own benefit. Practice for interviews.
