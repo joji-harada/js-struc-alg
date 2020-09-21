@@ -26,7 +26,7 @@ function selectionSort(arr){
             };
         }
 
-        if(minIdx != i) swap(arr, i, minIdx);
+        if(minIdx !== i) swap(arr, i, minIdx);
     }
     return arr;
 }
