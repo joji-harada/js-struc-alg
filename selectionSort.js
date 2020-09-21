@@ -26,11 +26,12 @@ function selectionSort(arr){
             };
         }
 
-        if(min < arr[i]) swap(arr, i, minIdx);
+        if(minIdx != i){
+            if(min < arr[i]) swap(arr, i, minIdx);
+        }
     }
 
-    console.log(arr);
     return arr;
 }
 
-selectionSort([8,2,5,9,1,11,3,7]);
+selectionSort([0,2,34,22,10,19,17]);
