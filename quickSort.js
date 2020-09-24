@@ -42,3 +42,17 @@ function pivot(arr, start = 0, end = arr.length){
 
     return swapIndex;
 }
+
+function quickSort(arr, left = 0, right = arr.length){
+    if(left < right){
+        let pivotIndex = pivot(arr, left, right);
+
+        quickSort(arr, left, pivotIndex - 1);
+        quickSort(arr, pivotIndex + 1, right);
+    }
+
+    return arr;
+}
+
+//test
+console.log(quickSort([5,1,8,-2,15,12,4,8,55]));
