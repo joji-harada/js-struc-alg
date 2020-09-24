@@ -47,4 +47,4 @@ function mergeSort(arr) {
 }
 
 //test
-mergeSort([10,5,9,6]);
+console.log(mergeSort([5,2,7,1]));
