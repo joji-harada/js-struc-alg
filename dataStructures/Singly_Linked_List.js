@@ -119,6 +119,32 @@ class SinglyLinkedList{
 
         return rmItem;
     }
+
+    reverse(){
+        let currNode = this.head;
+        this.head = this.tail;
+        this.tail = currNode;
+
+        let prev = null;
+        let next;
+        for(let i = 0; i < this.length; i++){
+            next = currNode.next;
+            currNode.next = prev;
+            prev = currNode;
+            currNode = next;
+        }
+        return this;
+    }
+
+    print(){
+        let arr = [];
+        let current = this.head;
+        while(current){
+            arr.push(current.val);
+            current = current.next;
+        }
+        console.log(arr);
+    }
 }
 
 let list = new SinglyLinkedList();
