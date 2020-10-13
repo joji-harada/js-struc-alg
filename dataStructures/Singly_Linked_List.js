@@ -71,6 +71,41 @@ class SinglyLinkedList{
         this.length++;
         return this;
     }
+
+    get(index){
+        if(index < 0 || index >= this.length) return null;
+        
+        let counter = 0;
+        let curr = this.head;
+        while(counter !== index){
+            curr = curr.next;
+            counter++;
+        }
+        return curr;
+    }
+
+    set(index, val){
+        let found = this.get(index);
+        if(found){
+            found.val = val;
+            return true;
+        } 
+        return false;
+    }
+
+    insert(index, val){
+        let newNode = new Node(val);
+        if(index < 0 || index > this.length) return false;
+        if(index === this.length) this.push(val);
+        if(index === 0) this.unshift(val);
+
+        let prev = this.get(index - 1);
+        newNode.next = prev.next;
+        prev.next = newNode;
+        
+        this.length++;
+        return true;
+    }
 }
 
 let list = new SinglyLinkedList();
