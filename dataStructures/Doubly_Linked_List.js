@@ -1,4 +1,4 @@
-class newNode {
+class Node {
     constructor(val){
         this.data = val;
         this.prev = null;
