@@ -1,3 +1,2 @@
 # js-struc-alg
- Data structures and algorithms in JS
- For my own benefit. Practice for interviews.
+ Reviewing data structures and algorithms in JS by recreating them for my own benefit. Mainly as practice for future interviews.
