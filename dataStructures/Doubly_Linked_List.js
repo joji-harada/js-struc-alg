@@ -1,6 +1,6 @@
 class Node {
     constructor(val){
-        this.data = val;
+        this.val = val;
         this.prev = null;
         this.next = null;
     }
@@ -58,4 +58,27 @@ class DoublyLinkedList {
         this.length--;
         return shifted;
     }
+
+    unshift(val){
+        if(!this.head) return this.push(val);
+
+        let newNode = new Node(val);
+        newNode.next = this.head;
+        this.head.prev = newNode;
+        this.head = newNode;
+        this.length++;
+        return this;
+    }
+
+    print(){
+        let arr = [];
+        let current = this.head;
+        while(current){
+            arr.push(current.val);
+            current = current.next;
+        }
+        console.log(arr);
+    }
 }
+
+let list = new DoublyLinkedList(); //for testing
