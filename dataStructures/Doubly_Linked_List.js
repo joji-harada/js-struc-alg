@@ -92,6 +92,15 @@ class DoublyLinkedList {
         }
     }
 
+    set(index, val){
+        let found = this.get(index);
+        if(found !== undefined){
+            found.val = val;
+            return true;
+        }
+        return false;
+    }
+
     print(){
         let arr = [];
         let current = this.head;
