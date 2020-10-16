@@ -1,5 +1,5 @@
 class Node {
-    constructor(val){
+    constructor(val) {
         this.val = val;
         this.prev = null;
         this.next = null;
@@ -7,15 +7,15 @@ class Node {
 }
 
 class DoublyLinkedList {
-    constructor(){
+    constructor() {
         this.head = null;
         this.tail = null;
         this.length = 0;
     }
-    
-    push(val){
+
+    push(val) {
         let newNode = new Node(val);
-        if(!this.head){
+        if (!this.head) {
             this.head = newNode;
             this.tail = newNode;
         } else {
@@ -27,11 +27,11 @@ class DoublyLinkedList {
         return this;
     }
 
-    pop(){
-        if(!this.head) return undefined;
+    pop() {
+        if (!this.head) return undefined;
 
         let popped = this.tail;
-        if(this.length === 1){
+        if (this.length === 1) {
             this.head = null;
             this.tail = null;
         } else {
@@ -43,11 +43,11 @@ class DoublyLinkedList {
         return popped;
     }
 
-    shift(){
-        if(!this.head) return undefined;
+    shift() {
+        if (!this.head) return undefined;
 
         let shifted = this.head;
-        if(this.length === 1){
+        if (this.length === 1) {
             this.head = null;
             this.tail = null;
         } else {
@@ -59,8 +59,8 @@ class DoublyLinkedList {
         return shifted;
     }
 
-    unshift(val){
-        if(!this.head) return this.push(val);
+    unshift(val) {
+        if (!this.head) return this.push(val);
 
         let newNode = new Node(val);
         newNode.next = this.head;
@@ -70,13 +70,13 @@ class DoublyLinkedList {
         return this;
     }
 
-    get(index){
-        if(index < 0 || index >= this.length) return undefined;
+    get(index) {
+        if (index < 0 || index >= this.length) return undefined;
 
-        if(index <= this.length / 2){
+        if (index <= this.length / 2) {
             let curr = this.head;
             let counter = 0;
-            while(counter !== index){
+            while (counter !== index) {
                 curr = curr.next;
                 counter++;
             }
@@ -84,7 +84,7 @@ class DoublyLinkedList {
         } else {
             let curr = this.tail;
             let counter = this.length - 1;
-            while(counter !== index){
+            while (counter !== index) {
                 curr = curr.prev;
                 counter--;
             }
@@ -92,19 +92,50 @@ class DoublyLinkedList {
         }
     }
 
-    set(index, val){
+    set(index, val) {
         let found = this.get(index);
-        if(found !== undefined){
+        if (found !== undefined) {
             found.val = val;
             return true;
         }
         return false;
     }
 
-    print(){
+    insert(index, val) {
+        if (index < 0 || index > this.length) return false;
+        if (index === 0) return !!this.unshift(val);
+        if (index === this.length) return !!this.push(val);
+
+        let newNode = new Node(val);
+        let temPrev = this.get(index - 1);
+
+        temPrev.next.prev = newNode;
+        newNode.next = temPrev.next;
+        newNode.prev = temPrev;
+        temPrev.next = newNode;
+
+        this.length++;
+        return true;
+    }
+
+    remove(index){
+        if(index < 0 || index >= this.length) return undefined;
+        if(index === 0) return !!this.shift();
+        if(index === this.length - 1) return !!this.pop();
+
+        let rmNode = this.get(index);
+        
+        rmNode.prev.next = rmNode.next;
+        rmNode.next.prev = rmNode.prev;
+        rmNode.prev = null, rmNode.next = null;
+        this.length--;
+        return rmNode;
+    }
+
+    print() {
         let arr = [];
         let current = this.head;
-        while(current){
+        while (current) {
             arr.push(current.val);
             current = current.next;
         }
