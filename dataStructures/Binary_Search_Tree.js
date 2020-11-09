@@ -76,15 +76,44 @@ class BinarySearchTree {
         }
         return data;
     }
+
+    dfsPreOrder(){
+        let data = [];        
+        function traverse(node){
+            data.push(node.val);
+            if(node.left) traverse(node.left);
+            if(node.right) traverse(node.right);
+        }
+        traverse(this.root);
+
+        return data;
+    }
+
+    dfsPostOrder(){
+        let data = [];
+        
+        function traverse(node){
+            if(node.right) traverse(node.right);
+            if(node.left) traverse(node.left);
+            data.push(node.val);
+        }
+        traverse(this.root);
+
+        return data;
+    }
+
+    dfsInOrder(){
+        let data = [];
+
+        function traverse(node){
+            if(node.left) traverse(node.left);
+            data.push(node.val);
+            if(node.right) traverse(node.right);
+        }
+        traverse(this.root);
+
+        return data;
+    }
 }
 
 let tree = new BinarySearchTree();
-// tree.insert(10);
-// tree.insert(5);
-// tree.insert(2);
-// tree.insert(7);
-// tree.insert(13);
-// tree.insert(11);
-// tree.insert(16);
-
-// console.log(tree.contains(76));
