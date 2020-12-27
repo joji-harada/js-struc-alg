@@ -78,4 +78,6 @@ ht.set('lightcoral', '#F08080');
 ht.set('mediumviolet', '#C71585');
 ht.set('plum', '#DDA0DD');
 
-console.log(ht.keys());
+ht.keys().forEach(function(key){
+    console.log(ht.get(key));
+});
