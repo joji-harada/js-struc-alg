@@ -9,7 +9,7 @@ class HashTable {
         for(let i = 0; i < Math.min(key.length, 100); i++){
             let char = key[i];
             let val = char.charCodeAt(0) - 96;
-            total = (total * WEIRD_PRIME + value) % this.keyMap.length;
+            total = (total * WEIRD_PRIME + val) % this.keyMap.length;
         }
         return total;
     }
@@ -22,7 +22,28 @@ class HashTable {
         this.keyMap[index].push([key, val]);
     }
 
-    get(){
-
+    get(key){
+        let index = this._hash(key);
+        if(this.keyMap[index]){
+            for(let i = 0; i < this.keyMap[index].length; i++){
+                if(this.keyMap[index][i][0] === key){
+                    return this.keyMap[index][i][1];
+                }
+            }
+        }
+        return undefined;
     }
 }
+
+let ht = new HashTable();
+// TEST CASE SET UP
+
+// ht.set('maroon', '#800000');
+// ht.set('yellow', '#FFFF00');
+// ht.set('olive', '#808000');
+// ht.set('salmon', '#FA8072');
+// ht.set('lightcoral', '#F08080');
+// ht.set('mediumviolet', '#C71585');
+// ht.set('plum', '#DDA0DD');
+
+// console.log(ht.get('plum'));
