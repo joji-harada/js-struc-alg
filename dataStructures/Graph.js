@@ -56,6 +56,26 @@ class Graph {
 
         return result;
     }
+
+    dfsIterative(start){
+        let stack = [start];
+        let visited = {};
+        let result = [];
+        let current;
+
+        visited[start] = true;
+        while(stack.length){
+            current = stack.pop();
+            result.push(current);
+            this.adjacencyList[current].forEach(neighbor => {
+                if(!visited[neighbor]){
+                    visited[neighbor] = true;
+                    stack.push(neighbor);
+                }
+            })
+        }
+        return result;
+    }
 }
 
 
@@ -77,3 +97,4 @@ g.addEdge("D", "E");
 g.addEdge("E", "F");
 
 console.log(g.dfsRecursive("A"));
+console.log(g.dfsIterative("A"));
