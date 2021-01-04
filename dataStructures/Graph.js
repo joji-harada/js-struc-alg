@@ -28,8 +28,18 @@ class Graph {
             console.log("ERROR: One or more vertices don't exist.")
         }
     }
+
+    removeVertex(vert){
+        while(this.adjacencyList[vert].length){
+            let adjacentVertex = this.adjacencyList[vert].pop();
+            this.removeEdge(vert, adjacentVertex);
+        }
+        delete this.adjacencyList[vert];
+    }
 }
 
+
+//for testing
 let g = new Graph;
 
 g.addVertex("Dallas");
