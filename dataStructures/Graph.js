@@ -11,8 +11,12 @@ class Graph {
         if(this.adjacencyList[vert1] && this.adjacencyList[vert2]){
             this.adjacencyList[vert1].push(vert2);
             this.adjacencyList[vert2].push(vert1);
+        } else {
+            console.log("One or more vertices don't exist.")
         }
     }
+
+
 }
 
 let g = new Graph;
