@@ -38,12 +38,13 @@ class Graph {
     }
 
     dfsRecursive(start){
+        if(!this.adjacencyList[start]) return undefined;
         let result = [];
         let visited = {};
         const adjacencyList = this.adjacencyList;
 
         (function dfs(vertex){
-            if(!adjacencyList[vertex]) return undefined;
+            if(!vertex) return null;
             visited[vertex] = true;
             result.push(vertex);
             adjacencyList[vertex].forEach(neighbor => {
@@ -75,4 +76,4 @@ g.addEdge("C", "E");
 g.addEdge("D", "E");
 g.addEdge("E", "F");
 
-console.log(g.dfsRecursive("B"));
+console.log(g.dfsRecursive("A"));
