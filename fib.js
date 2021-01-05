@@ -5,3 +5,5 @@ function fib(num){
 
     return fib(num - 1) + fib(num - 2);
 }
+
+//BIG O IS 2^N
