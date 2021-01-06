@@ -8,6 +8,6 @@ function fib(num, memo = []){
     return result;
 }
 
-//BIG O IS 2^N
+
 
 console.log(fib(100));
